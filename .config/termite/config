@@ -1,0 +1,41 @@
+[options]
+icon_name = terminal
+allow_bold = true
+audible_bell = true
+clickable_url = true
+dynamic_title = true
+font = Monospace 10
+fullscreen = false
+cursor_blink = off
+cursor_shape = block
+mouse_autohide = false
+scroll_on_keystroke = true
+scrollback_lines = 10000
+scroll_on_output = false
+
+[colors]
+background = #0e1019
+foreground = #fffaf4
+foreground_bold = #fffaf4
+cursor = #fffaf4
+cursor_foreground = #fffaf4
+
+color0 = #232323
+color1 = #ff000f
+color2 = #8ce10b
+color3 = #ffb900
+color4 = #008df8
+color5 = #6d43a6
+color6 = #00d8eb
+color7 = #ffffff
+
+color8 = #444444
+color9 = #ff2740
+color10 = #abe15b
+color11 = #ffd242
+color12 = #0092ff
+color13 = #9a5feb
+color14 = #67fff0
+color15 = #ffffff
+
+# vim: ft=dosini cms=#%s
