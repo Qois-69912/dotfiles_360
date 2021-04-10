@@ -1,5 +1,4 @@
 favorites=xfce4-web-browser.desktop,xfce4-mail-reader.desktop,xfce4-file-manager.desktop,xfce4-terminal-emulator.desktop
-recent=system-config-printer.desktop,audacious.desktop,android-file-transfer.desktop,Zoom.desktop,cups.desktop,hplip.desktop,firefox.desktop,xfce4-power-manager-settings.desktop,xfce4-taskmanager.desktop,xfce-backdrop-settings.desktop
 button-icon=xfce4-whiskermenu
 button-single-row=true
 show-button-title=false
