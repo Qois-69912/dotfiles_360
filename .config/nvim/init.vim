@@ -1,4 +1,5 @@
 " =============== Neovim plugins =============== "
+" Install vim-plug for the first time
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
     echo "Downloading junegunn/vim-plug to manage plugins..."
     silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
@@ -6,21 +7,33 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
     autocmd VimEnter * PlugInstall 
 endif
 
+" Plugins list 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+
+" Utillities
 Plug 'preservim/nerdcommenter'
 Plug 'lambdalisue/fern.vim'
+Plug 'kassio/neoterm'
+Plug 'jiangmiao/auto-pairs'
+Plug 'vimwiki/vimwiki'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" UI
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'sheerun/vim-polyglot'
-Plug 'kassio/neoterm'
-Plug 'vimwiki/vimwiki'
-Plug 'OmniSharp/omnisharp-vim'
+
+" Syntax
 Plug 'dense-analysis/ale'
+Plug 'sheerun/vim-polyglot'
+
+" C#
+Plug 'OmniSharp/omnisharp-vim'
+
 call plug#end()
 
 
 " =============== Neovim configuration =============== "
-" Use system clipboard
+" Use custom clipboard (xclip)
 set clipboard=unnamedplus
 
 " Indention configuration
@@ -61,9 +74,37 @@ hi LineNr ctermbg=NONE
 " Random configuration
 set lazyredraw 
 set autochdir
-set nocompatible
 filetype plugin on
 filetype indent plugin on
+
+" C#
+"function SetCSSettings()
+
+    " Use deoplete
+    "call deoplete#enable()
+
+    " Use smartcase
+    "call deoplete#custom#option('smart_case', v:true)
+
+    " Use OmniSharp-vim omnifunc 
+    "call deoplete#custom#source('omni', 'functions', { 'cs':  'OmniSharp#Complete' })
+
+    " Set how Deoplete filters omnifunc output
+    "call deoplete#custom#var('omni', 'input_patterns', {
+        "\ 'cs': '[^. *\t]\.\w*',
+        "\})
+
+"endfunction
+
+"augroup csharp_commands
+    "autocmd!
+
+    " Use smartcase.
+    " call deoplete#custom#option('smart_case', v:true) 
+    "autocmd FileType cs call SetCSSettings()
+
+"augroup END
+
 
 " =============== Mappings =============== "
 " Switch Esc to 'jk'
@@ -92,9 +133,13 @@ nnoremap <M-K> <C-w>-
 " Use Ctrl+s to save
 nnoremap <silent><C-s> :w<cr>
 
-"C#
-autocmd FileType cs nnoremap <silent><M-r> :echo "Compiling Program"<cr> :silent !dotnet build<cr>:silent !termite -t "Run Program" -e "bash -c 'dotnet run --no-build && echo   && echo   && read -n 1 -s -r -p Press_any_Keys_To_Continue...'" &> /dev/null<cr>
+" Bind Ctrl + p to Alt + p on insert mode
+inoremap <M-p> <C-p>
+
+" Specific for only C# type files
+autocmd FileType cs nnoremap <silent><M-r> :w<cr>:echo "Compiling Program"<cr> :silent !dotnet build<cr>:silent !termite -t "Run Program" -e "bash -c 'dotnet run --no-build && echo   && echo   && read -n 1 -s -r -p Press_any_Keys_To_Continue...'" &> /dev/null<cr>
 autocmd FileType cs nnoremap <silent><M-R> :echo "Running Program"<cr> :silent !termite -t "Run Program" -e "bash -c 'dotnet run --no-build && echo   && echo   && read -n 1 -s -r -p Press_any_Keys_To_Continue...'" &> /dev/null<cr>
+
 
 " =============== Plugins configuration =============== "
 " Vim airline
@@ -102,6 +147,8 @@ let g:airline_theme='night_owl'
 let g:airline_section_z = airline#section#create(['%3p%% %L:%3v'])
 
 " Nerdcommenter configuration
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 map cc <Plug>NERDCommenterToggle
 
 " Fern configuration
@@ -140,8 +187,7 @@ let g:vimwiki_list = [{'path': '~/Notes/'}]
 
 autocmd FileType vimwiki map <buffer> <M-f> 0<cr>
 
+" Ale
 let g:ale_linters = {
 \ 'cs': ['OmniSharp']
 \}
-
-let g:OmniSharp_popup = 1
