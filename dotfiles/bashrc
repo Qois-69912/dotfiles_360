@@ -19,6 +19,4 @@ alias gstatus='git status'
 alias gcommit='git commit'
 alias glog='git log'
 alias gadd='git add'
-
-# Export dotnet tools
-export PATH="$PATH:/home/qois/.dotnet/tools"
+alias gbranch='git branch'
