@@ -68,8 +68,8 @@ installasi_config() {
         target="$2/.$1"
     fi
 
-    # Nanti 'dotfiles/$1' diganti dengan '/tmp/'
-    cp dotfiles/$1 $target
+    # Mencopy config ke tempat yang benar
+    cp /tmp/dotfiles_360/dotfiles/$1 $target
 }
 
 main() {
