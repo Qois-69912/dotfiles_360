@@ -1,16 +1,19 @@
-#!/bin/sh 
+#!/bin/sh
 # 'install.sh' adalah script primary (utama) yang nanti akan menjalankan script lainnya.
 # Masing - masing script yang dijalankan mempunyai tujuan tersendiri.
 # Tempat script lainnya akan berada didirectori 'script'.
 
 install_dotfiles() {
     echo "Clonning repository"
-    git clone https://github.com/Qois-69912/dotfiles_360 /tmp/dotfiles_360 &> /dev/null
-    sh scripts/config.sh
+    if [ -e "/tmp/dotfiles_360" ]; then
+        rm -rf /tmp/dotfiles_360
+    fi
+    git clone https://github.com/Qois-69912/dotfiles_360 /tmp/dotfiles_360 2> /dev/null
+    sh /tmp/dotfiles_360/scripts/config.sh
 }
 
 main() {
-    if [[ $1 == "-i" ]]; then
+    if [ "$1" = "-i" ]; then
         echo "Installing dotfiles.."
         install_dotfiles
     else

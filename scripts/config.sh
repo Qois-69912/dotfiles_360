@@ -4,7 +4,7 @@ yay_package=""
 target=""
 
 check_dependencies() {
-    if ! command -v git "$1"; then 
+    if [ "$(command -v "$1")" = "" ]; then 
         echo "Tidak ada program $1, nanti akan diinstall"
         pac_package="$pac_package $1"
     fi
@@ -13,7 +13,7 @@ check_dependencies() {
 install_dependencies() {
     if ! [ -z "${pac_package}" ]; then
         echo "Installing all the dependencies (require root)"
-        sudo pacman $pac_package
+        sudo pacman -S $pac_package
     fi
 
     if ! [ -z "${yay_package}" ]; then
@@ -21,7 +21,7 @@ install_dependencies() {
         yay -S $yay_package
     fi
 
-    if [[ -z "${pac_package}" && -z "${yay_package}" ]]; then
+    if [ -z "${pac_package}" ] && [ -z "${yay_package}" ]; then
         echo "Tidak ada hal yang harus diinstall"
     fi
 }
@@ -34,23 +34,23 @@ installasi_config() {
     
     # Skenario khusus untuk beberapa file
     # bashrc
-    if $1 == "bashrc" &> /dev/null; then
+    if [ "$1" = "bashrc" ]; then
         # Memastikan apakah shell mengunakan bash
-        if echo $0 != "/bin/bash" &> /dev/null; then
+        if [ "$(echo $SHELL)" != "/bin/bash" ]; then
             echo "Change shell to bash (require root)"
             sudo chsh -s /bin/bash
         fi
 
     # gitconfig
-    elif $1 == "gitconfig" &> /dev/null; then
+    elif [ "$1" = "gitconfig" ]; then
         check_dependencies git 
 
     # alacritty
-    elif $1 == "alacritty.yml" &> /dev/null; then
+    elif [ "$1" = "alacritty.yml" ]; then
         check_dependencies alacritty
 
     # redshift
-    elif $1 == "redshift.conf" &> /dev/null; then
+    elif [ "$1" = "redshift.conf" ]; then
         check_dependencies redshift
     fi
 
@@ -58,13 +58,13 @@ installasi_config() {
     target="$2"
 
     # Membuat dir, kalau belum ada
-    if [[ $3 == "dir" ]]; then
-        if ! [[ -d $2 ]]; then
+    if [ "$3" = "dir" ]; then
+        if ! [ -d $2 ]; then
             mkdir $2
         fi
 
     # Merename file, menjadi '.'file
-    elif [[ $3 == "dot" ]]; then
+    elif [ "$3" = "dot" ]; then
         target="$2/.$1"
     fi
 
