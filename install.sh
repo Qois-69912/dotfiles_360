@@ -12,9 +12,14 @@ install_dotfiles() {
     sh /tmp/dotfiles_360/scripts/config.sh
 }
 
+install_packages() {
+    sh /tmp/dotfiles_360/scripts/packages.sh
+}
+
 main() {
     if [ "$1" = "-i" ]; then
         echo "Installing dotfiles.."
+        install_packages
         install_dotfiles
     else
         echo "Install script for dotfiles"

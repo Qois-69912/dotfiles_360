@@ -1,0 +1,45 @@
+# Catatan : 
+# p = pacman
+# r = remove / uninstall
+# a = aur
+
+alacritty               | p | Terminal Emulator
+android-file-transfer   | p | Program untuk share file dgn android
+arc-gtk-theme           | p | Desktop theme
+audacious               | p | Music Player
+brave                   | p | Browser
+dash                    | p | POSIX-compliant of /bin/sh
+dotnet-sdk-bin          | a | .NET SDK 
+evince                  | p | Pdf viewer
+ffmpeg                  | p | Multitools for audio & video
+firefox                 | p | Browser
+flameshot               | p | Program untuk screenshot
+git                     | p | Version control system
+gvfs                    | p | Virtual filesystem 
+gzip                    | p | GNU compression utility  
+ksuperkey               | a | Allows shortcut using the super key only
+mpv                     | p | Video player
+neovim                  | p | Text editor
+network-manager-applet  | p | Applet for managing network connections
+nodejs                  | p | Evented I/O for V8 javascript 
+nomacs                  | p | Image viewer
+npm                     | p | A package manager for javascript   
+p7zip                   | p | CLI file archiver 
+papirus-icon-theme      | p | Icon theme
+pavucontrol             | p | PulseAudio volume control
+pulseaudio              | p | Sound server 
+polkit-gnome            | p | Legacy polkit agent for GNOME
+python-pip              | p | Tool for installing Python packages   
+redshift                | p | Adjust color temperature
+rustup                  | p | The Rust toolchain installer    
+tlp                     | p | Power manager 
+ttf-droid               | p | Droid font
+ttf-times-new-roman     | a | Times new roman font
+unzip                   | p | For extracting and viewing files .zip  
+xclip                   | p | Clipboard
+xfce4                   | p | Desktop environment
+xfce4-notifyd           | p | Xfce notification plugin
+xfce4-pulseaudio-plugin | p | Xfce pulseaudio plugin
+xfce4-taskmanager       | p | Xfce taskmanager
+xfce4-terminal          | r | Xfce terminal emulator
+xfce4-whiskermenu-plugin| p | Xfce whiskermenu
