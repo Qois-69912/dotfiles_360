@@ -8,6 +8,7 @@ android-file-transfer   | p | Program untuk share file dgn android
 arc-gtk-theme           | p | Desktop theme
 audacious               | p | Music Player
 brave                   | p | Browser
+checkbashisms           | p | Program untuk cek "bashisms"
 dash                    | p | POSIX-compliant of /bin/sh
 dotnet-sdk-bin          | a | .NET SDK 
 evince                  | p | Pdf viewer
