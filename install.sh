@@ -13,7 +13,7 @@ install_dotfiles() {
 }
 
 install_packages() {
-    sh /tmp/dotfiles_360/scripts/packages.sh
+    sh /tmp/dotfiles_360/scripts/package.sh
 }
 
 main() {
