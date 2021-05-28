@@ -17,20 +17,16 @@ install_packages() {
 }
 
 main() {
-    if [ "$1" = "-i" ]; then
+    if [ "$1" = "install" ]; then
         echo "Installing dotfiles.."
         install_packages
         install_dotfiles
     else
         echo "Install script for dotfiles"
-        echo "Usage : sh install.sh [options] [path-to-target]"
+        echo "Usage: sh install.sh [options]"
         echo " "
-        echo "Options : "
-        echo "-i    Install Dotfiles dari repository dotfiles"
-        echo "-b    Backup config yang sekarang ada ke repository-nya dotfiles"
-        echo " "
-        echo "Path-to-target => hanya untuk options '-b'"
-        echo " "
+        echo "Options: "
+        echo "  install       Install Dotfiles dari repository dotfiles"
     fi
 }
 
