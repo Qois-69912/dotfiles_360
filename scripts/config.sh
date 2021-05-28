@@ -5,14 +5,14 @@ installasi_config() {
     # Catatan : Jangan check apakah file ada atau tidak, sebab
     # bila file ada, maka tidak bisa men-rewrite config lama dgn yang baru
 
-    echo "Installasi config $1"
+    echo "$(tput bold && tput setaf 6)Installasi config$(tput sgr 0) $1"
     
     # Skenario khusus untuk beberapa file
     # bashrc
     if [ "$1" = "bashrc" ]; then
         # Memastikan apakah shell mengunakan bash
         if [ "$(echo $SHELL)" != "/bin/bash" ]; then
-            echo "Change shell to bash (require root)"
+            echo "$(tput bold && tput setaf 6)Change shell to bash (require root)$(tput sgr 0)$1"
             sudo chsh -s /bin/bash
             sudo ln -sf dash /bin/sh
         fi
@@ -37,8 +37,8 @@ installasi_config() {
 }
 
 main() {
-    echo "Installasi configurasi..."
-    echo "Warning!!, ini akan menyebabkan configurasi yang sekarang terhapus"
+    echo "$(tput bold && tput setaf 6)Installasi configurasi$(tput sgr 0)"
+    echo "$(tput bold && tput setaf 1)Warning!!$(tput sgr 0), ini akan menyebabkan configurasi yang sekarang terhapus"
 
     # Installasi config
     installasi_config bashrc $HOME dot
