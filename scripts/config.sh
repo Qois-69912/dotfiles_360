@@ -43,9 +43,11 @@ main() {
     # Installasi config
     installasi_config bashrc $HOME dot
     installasi_config gitconfig $HOME dot
-    installasi_config alacritty.yml $HOME/.config/alacritty dir
-    installasi_config redshift.conf $HOME/.config
     installasi_config xprofile $HOME dot
+
+    installasi_config redshift.conf $HOME/.config
+    installasi_config alacritty.yml $HOME/.config/alacritty dir
+    installasi_config fonts.conf $HOME/.config/fontconfig dir
 }
 
 main
