@@ -65,21 +65,6 @@ font:
     family: monospace
     style: Regular
 
-  # Bold font face
-  # bold:
-    # family: monospace
-    # style: Bold
-
-  # Italic font face
-  # italic:
-    # family: monospace
-    # style: Italic
-
-  # Bold italic font face
-  # bold_italic:
-    # family: monospace
-    # style: Bold Italic
-
   # Point size
   size: 9.6
 
