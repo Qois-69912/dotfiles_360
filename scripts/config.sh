@@ -5,7 +5,7 @@ installasi_config() {
     # Catatan : Jangan check apakah file ada atau tidak, sebab
     # bila file ada, maka tidak bisa men-rewrite config lama dgn yang baru
 
-    echo "$(tput bold && tput setaf 6)Installasi config$(tput sgr 0) $1"
+    echo "$(tput bold && tput setaf 2)Installasi config$(tput sgr 0) $1"
     
     # Skenario khusus untuk beberapa file
     # bashrc
@@ -38,7 +38,7 @@ installasi_config() {
 
 main() {
     echo "$(tput bold && tput setaf 6)Installasi configurasi$(tput sgr 0)"
-    echo "$(tput bold && tput setaf 1)Warning!!$(tput sgr 0), ini akan menyebabkan configurasi yang sekarang terhapus"
+    echo "$(tput bold && tput setaf 1)Warning!!,$(tput sgr 0) ini akan menyebabkan configurasi yang sekarang terhapus"
 
     # Installasi config
     installasi_config bashrc $HOME dot
