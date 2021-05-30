@@ -4,28 +4,29 @@
 # Tempat script lainnya akan berada didirectori 'script'.
 
 install_dotfiles() {
-    echo "Clonning repository"
+    sh /tmp/dotfiles_360/scripts/config.sh
+}
+
+install_packages() {
+    echo "$(tput bold && tput setaf 6)Clonning repository$(tput sgr 0)"
     if [ -e "/tmp/dotfiles_360" ]; then
         rm -rf /tmp/dotfiles_360
     fi
     git clone https://github.com/Qois-69912/dotfiles_360 /tmp/dotfiles_360 2> /dev/null
-    sh /tmp/dotfiles_360/scripts/config.sh
+
+    sh /tmp/dotfiles_360/scripts/package.sh
 }
 
 main() {
-    if [ "$1" = "-i" ]; then
-        echo "Installing dotfiles.."
+    if [ "$1" = "install" ]; then
+        install_packages
         install_dotfiles
     else
         echo "Install script for dotfiles"
-        echo "Usage : sh install.sh [options] [path-to-target]"
+        echo "Usage: sh install.sh [options]"
         echo " "
-        echo "Options : "
-        echo "-i    Install Dotfiles dari repository dotfiles"
-        echo "-b    Backup config yang sekarang ada ke repository-nya dotfiles"
-        echo " "
-        echo "Path-to-target => hanya untuk options '-b'"
-        echo " "
+        echo "Options: "
+        echo "  install       Install Dotfiles dari repository dotfiles"
     fi
 }
 
