@@ -16,6 +16,16 @@ installasi_config() {
             sudo chsh -s /bin/bash
             sudo ln -sf dash /bin/sh
         fi
+
+    # Init.vim
+    elif [ "$1" = "init.vim" ]; then
+        rm -rf $2 && mkdir -p $2/colors
+        cp /tmp/dotfiles_360/dotfiles/nvim/molokai.vim $2/colors
+        $1="nvim/$1"
+
+        echo "$(tput bold && tput setaf 6)Setup rustup$(tput sgr 0)"
+        rustup default stable && rustup default toolchain
+        rustup component add rust-src
     fi
 
     # Target dimana config akan disimpan
@@ -48,6 +58,7 @@ main() {
     installasi_config redshift.conf $HOME/.config
     installasi_config alacritty.yml $HOME/.config/alacritty dir
     installasi_config fonts.conf $HOME/.config/fontconfig dir
+    installasi_config init.vim $HOME/.config/nvim dir
 }
 
 main
