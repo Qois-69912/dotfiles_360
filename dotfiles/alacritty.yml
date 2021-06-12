@@ -66,7 +66,7 @@ font:
     style: Regular
 
   # Point size
-  size: 9.6
+  size: 11
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -203,17 +203,6 @@ mouse:
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
-
-  url:
-    # URL launcher
-    # This program is executed when clicking on a text which is recognized as a
-    # URL. The URL is always added to the command as the last parameter.
-    launcher:
-     program: xdg-open
-     args: []
-
-    # URL modifiers
-    modifiers: None
 
 
 # Key bindings

@@ -1,3 +1,12 @@
+" =============== Vim-Plug =============== "
+if ! filereadable(system('echo -n "$HOME/.config/nvim/autoload/plug.vim"'))
+    echo "Downloading junegunn/vim-plug to manage plugins..."
+    silent !mkdir -p $HOME/.config/nvim/autoload/
+    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > $HOME/.config/nvim/autoload/plug.vim
+    autocmd VimEnter * PlugInstall
+endif
+
+
 " =============== Neovim plugins =============== "
 " Plugins list 
 call plug#begin(system('echo -n "$HOME/.config/nvim/plugged"'))
