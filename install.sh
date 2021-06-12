@@ -1,7 +1,7 @@
 #!/bin/sh
 # 'install.sh' adalah script primary (utama) yang nanti akan menjalankan script lainnya.
 # Masing - masing script yang dijalankan mempunyai tujuan tersendiri.
-# Tempat script lainnya akan berada didirectori 'script'.
+# Tempat script lainnya akan berada di directori 'script'.
 
 install_dotfiles() {
     sh /tmp/dotfiles_360/scripts/config.sh
