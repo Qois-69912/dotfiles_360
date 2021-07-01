@@ -1,33 +1,27 @@
 #!/bin/sh
-# 'install.sh' adalah script primary (utama) yang nanti akan menjalankan script lainnya.
-# Masing - masing script yang dijalankan mempunyai tujuan tersendiri.
-# Tempat script lainnya akan berada di directori 'script'.
 
-install_dotfiles() {
-    sh /tmp/dotfiles_360/scripts/config.sh
-}
+# TODO : Script ini belum sama sekali pernah dicoba, suatu saat nanti 'test' script ini.
 
-install_packages() {
-    echo "$(tput bold && tput setaf 6)Clonning repository$(tput sgr 0)"
-    if [ -e "/tmp/dotfiles_360" ]; then
-        rm -rf /tmp/dotfiles_360
-    fi
-    git clone https://github.com/Qois-69912/dotfiles_360 /tmp/dotfiles_360 2> /dev/null
+if [[ ! -d ~/.dotfiles/home ]]; then
+    git clone https://github.com/Qois-69912/dotfiles_360 ~/.dotfiles
+fi
 
-    sh /tmp/dotfiles_360/scripts/package.sh
-}
+echo $(tput bold && tput setaf 6)Updating the system$(tput sgr 0)
+yay -Syyu --noconfirm
 
-main() {
-    if [ "$1" = "install" ]; then
-        install_packages
-        install_dotfiles
-    else
-        echo "Install script for dotfiles"
-        echo "Usage: sh install.sh [options]"
-        echo " "
-        echo "Options: "
-        echo "  install       Install Dotfiles dari repository dotfiles"
-    fi
-}
+echo "$(tput bold && tput setaf 6)Installing packages$(tput sgr 0)"
+cat ~/.dotfiles/list-packages.txt | awk '$3 == "a"' | awk '{print $1}' > /tmp/aur
+cat ~/.dotfiles/list-packages.txt | awk '$3 == "p"' | awk '{print $1}' > /tmp/pacman
+sudo pacman -S --needed - < /tmp/pacman
+yay -S --noconfirm - < /tmp/aur
 
-main $1
+echo "$(tput bold && tput setaf 6)Sync configuration to host system$(tput sgr 0)"
+cp -a ~/.dotfiles/home/. $HOME
+
+echo "$(tput bold && tput setaf 6)Change shell to bash (require root)$(tput sgr 0)$1"
+sudo chsh -s /bin/bash
+sudo ln -sf dash /bin/sh
+
+echo "$(tput bold && tput setaf 6)Setup rustup$(tput sgr 0)"
+rustup default stable && rustup default toolchain
+rustup component add rust-src

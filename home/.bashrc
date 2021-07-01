@@ -23,4 +23,4 @@ alias gbranch='git branch'
 alias gdiff='git diff'
 
 # PATH
-PATH+=:$HOME/.local/bin
+export PATH="$HOME/.local/bin:$PATH"
