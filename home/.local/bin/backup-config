@@ -8,7 +8,7 @@ dotfiles="$HOME/.dotfiles"
 backup_config() {
     echo "Backup file $1"
 
-    if [[ ! -d $dotfiles/$2 ]]; then
+    if [ ! -d $dotfiles/$2 ]; then
         mkdir -p $dotfiles/$2
     fi
 
@@ -17,9 +17,9 @@ backup_config() {
 
 
 # Main
-if [[ ! -d ~/.dotfiles ]]; then
+if [ ! -d ~/.dotfiles ]; then
     echo "Error !!!, Tidak ada folder '~/.dotfiles'" && exit 1    
-elif [[ ! -e ~/.dotfiles/list-configs.txt ]]; then
+elif [ ! -e ~/.dotfiles/list-configs.txt ]; then
     echo "Error !!!, Tidak ada file '~/.dotfiles/list-configs'" && exit 1
 fi
 
