@@ -1,0 +1,29 @@
+#!/bin/sh
+# Ini script untuk "mem-backup" file yang ada dihost, yang nantinya akan disampan
+# Di folder "~/.dotfiles/home"
+
+
+dotfiles="$HOME/.dotfiles"
+
+backup_config() {
+    echo "Backup file $1"
+
+    if [[ ! -d $dotfiles/$2 ]]; then
+        mkdir -p $dotfiles/$2
+    fi
+
+    cp ~/$1 $dotfiles/$2
+}
+
+
+# Main
+if [[ ! -d ~/.dotfiles ]]; then
+    echo "Error !!!, Tidak ada folder '~/.dotfiles'" && exit 1    
+elif [[ ! -e ~/.dotfiles/list-configs.txt ]]; then
+    echo "Error !!!, Tidak ada file '~/.dotfiles/list-configs'" && exit 1
+fi
+
+cat ~/.dotfiles/list-configs.txt | awk '$1 == "|"' | awk '{print $2 " " $4}'| while read line
+do
+    backup_config $line
+done

@@ -22,6 +22,7 @@ Plug 'kassio/neoterm'
 Plug 'vimwiki/vimwiki'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
+Plug 'mattn/emmet-vim'
 
 " UI
 Plug 'vim-airline/vim-airline'
@@ -29,6 +30,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Syntax color
 Plug 'sheerun/vim-polyglot'
+Plug 'evanleck/vim-svelte'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -72,7 +74,7 @@ set number
 set mouse=a
 set showtabline=2
 set title
-set signcolumn=auto
+set signcolumn=yes
 
 " Modify Theme
 hi Normal guibg=NONE ctermbg=NONE
@@ -98,7 +100,7 @@ function CallTerminal(vertical)
             :27 sp
             :exe "normal \<M-j>"
         elseif a:vertical == "1"
-            :vsplit
+            :96 vsplit
             :exe "normal \<M-l>"
         endif
 
@@ -147,7 +149,7 @@ nnoremap <M-J> <C-w>+
 nnoremap <M-K> <C-w>-
 
 " Use Ctrl+s to save
-nnoremap <silent><C-s> :w<cr>
+nnoremap <silent> <Space>s :w<cr>
 
 " Bind Ctrl + p to Alt + p on insert mode
 inoremap <M-p> <C-p>
@@ -156,8 +158,8 @@ inoremap <M-p> <C-p>
 nnoremap <silent><M-f> :nohl<cr>
 
 " Tab shortcut 
-nnoremap <silent><C-t> :tabnew<cr>
-nnoremap <silent><C-w> :tabclose<cr>
+nnoremap <silent><Space>t :tabnew<cr>
+nnoremap <silent><Space>w :tabclose<cr>
 nnoremap <silent><M-1> 1gt<cr>
 nnoremap <silent><M-2> 2gt<cr>
 nnoremap <silent><M-3> 3gt<cr>
@@ -220,8 +222,24 @@ autocmd FileType vimwiki map <buffer> <M-f> 0<cr>
 nmap <M-m> :VimwikiIndex<cr>
 
 " Fugitive
-nnoremap <silent> ga :echo "'s' stage file, 'u' unstage file, 'cc' commit change"<cr>:Git<cr> 
+nnoremap <silent> ga :echo "'s' stage file, 'u' unstage file, 'cc' commit change"<cr>:tab Git<cr> 
+nnoremap <silent> gr :tab Git rebase -i HEAD~
 
 " Ale
+let g:ale_sign_error = ' ✘'
+let g:ale_sign_warning = ' ⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
 let g:ale_linters = {'rust': ['analyzer']}
-let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
+let g:ale_fixers = { 
+\   'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines']
+\}
+
+" Emmet
+nnoremap <Space>, :call emmet#expandAbbr(3, "")<cr>
+
+let g:user_emmet_mode='n'
+let g:user_emmet_install_global = 0
+
+autocmd FileType html,css,svelte EmmetInstall

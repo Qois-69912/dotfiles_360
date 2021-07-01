@@ -21,3 +21,6 @@ alias glog='git log'
 alias gadd='git add'
 alias gbranch='git branch'
 alias gdiff='git diff'
+
+# PATH
+PATH+=:$HOME/.local/bin

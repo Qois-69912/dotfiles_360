@@ -1,0 +1,11 @@
+List config (yang ingin dibackup) : 
+
+|  .bashrc                             | home/                        |
+|  .gitconfig                          | home/                        | 
+|  .xprofile                           | home/                        | 
+|  .config/redshift.conf               | home/.config/                | 
+|  .config/alacritty/alacritty.yml     | home/.config/alacritty/      | 
+|  .config/fontconfig/fonts.conf       | home/.config/fontconfig/     |
+|  .config/nvim/init.vim               | home/.config/nvim/           |
+|  .config/nvim/colors/molokai.vim     | home/.config/nvim/colors/    |  
+|  .local/bin/backup-config            | home/.local/bin/             |  
